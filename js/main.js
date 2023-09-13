@@ -1,4 +1,4 @@
-let news_list = document.querySelector(".news");
+/* let news_list = document.querySelector(".news");
 
 let news = [
     {
@@ -19,14 +19,46 @@ let news = [
     }
 ]
 
-/* for(let i = 0; i < news.length; i++){
+news.forEach(n => {
     news_list.insertAdjacentHTML("beforeend", 
-    `<div class="news_card"> + 
-    ${news[i]['title']} +
-    ${news[i]['desc']} +
-    ${news[i]['author']} + </div>`
+    `<div class="news_card">
+    <h2 class="title">${n.title}</h2>
+    <p class="text">${n.desc}</p>
+    <h4 class="text">${n.author}</h4>
+    `
     )
-} */
+}
+) */
+let news_list = document.querySelector(".news");
+
+let titleNews =  prompt('Введите заголовок');
+let descNews =  prompt('Введите описание новости');
+let authorNews =  prompt('Введите автора новости');
+
+let news = [
+    {
+        title:"Первый японский модуль для посадки на Луну вышел на заданную орбиту",
+        desc:"Ракета-носитель Н2А с японским лунным модулем SLIM и американским спутником XRISM стартовала сегодня около 2:42 мск. Через 14 минут после запуска агентство сообщило о благополучном отделении спутника XRISM.",
+        author: "Наталия"
+
+    },
+    {
+        title:"Астрономы из США описали загадочный источник сверхвысокой энергии",
+        desc:"Результаты исследования появились на сервере препринтов arXiv, а краткий отчет о работе приводит Phys.org. Авторы пишут, что пока сделан только первый шаг, который, возможно, поможет раскрыть истинную природу загадочного источника энергии.",
+        author: "Денис"
+    },
+    {
+        title:"Телескоп Уэбба нашел суперземлю с потенциально водным океаном",
+        desc:"Международная группа астрономов с использованием данных космического телескопа имени Джеймса Уэбба обнаружила метан и диоксид углерода в атмосфере экзопланеты, известной под названием K2-18 b.",
+        author: "Денис"
+    }
+]
+
+news.push({
+    title: titleNews,
+    desc: descNews,
+    author: authorNews,
+})
 
 news.forEach(n => {
     news_list.insertAdjacentHTML("beforeend", 
@@ -38,3 +70,5 @@ news.forEach(n => {
     )
 }
 )
+
+
