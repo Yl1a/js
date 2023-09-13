@@ -1,0 +1,22 @@
+body {
+    background: linear-gradient(180deg, #2A408E 0%, #1F0E50 99.99%, #2A1958 100%);
+    color: #fff;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.news {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+.news_card {
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 20px 15px;
+}
