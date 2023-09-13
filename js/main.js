@@ -31,10 +31,6 @@ news.forEach(n => {
 ) */
 let news_list = document.querySelector(".news");
 
-let titleNews =  prompt('Введите заголовок');
-let descNews =  prompt('Введите описание новости');
-let authorNews =  prompt('Введите автора новости');
-
 let news = [
     {
         title:"Первый японский модуль для посадки на Луну вышел на заданную орбиту",
@@ -54,11 +50,28 @@ let news = [
     }
 ]
 
-news.push({
-    title: titleNews,
-    desc: descNews,
-    author: authorNews,
+
+
+let btnNews = document.querySelector(".btn");
+btnNews.addEventListener('click', function(){
+
+    let titleNews =  prompt('Введите заголовок');
+    let descNews =  prompt('Введите описание новости');
+    let authorNews =  prompt('Введите автора новости');
+    addNews(titleNews, descNews, authorNews);
+    showNews(news_list, titleNews, descNews, authorNews);
+    
 })
+
+function showNews(arr, x, y, z){
+    arr.insertAdjacentHTML("beforeend", 
+    `<div class="news_card">
+    <h2 class="title">${x}</h2>
+    <p class="text">${y}</p>
+    <h4 class="text">${z}</h4>
+    `
+    )
+}
 
 news.forEach(n => {
     news_list.insertAdjacentHTML("beforeend", 
@@ -70,5 +83,13 @@ news.forEach(n => {
     )
 }
 )
+
+function addNews(x, y, z){
+    news.push({
+        title: x,
+        desc: y,
+        author: z,
+    })
+}
 
 
