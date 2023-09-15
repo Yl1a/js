@@ -1,10 +1,18 @@
+body {
+    background-color: #F4E8D0;
+}
+
 .container {
     width: 1000px;
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
 }
 
-.news {
+.link {
+    color: black;
+}
+
+/* .news {
     display: grid;
     gap: 20px;
     padding: 20px;
@@ -14,4 +22,40 @@
     border: 2px solid #000000;
     border-radius: 15px;
     padding: 20px;
+} */
+.qw_ans {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.content {
+    margin: 50px;
+}
+
+.accord {
+    background-color: #EDC4A0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px;
+    border: 1px solid #B29C62;
+    background-color: #B29C62;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+}
+
+.text {
+    padding: 10px;
 }
