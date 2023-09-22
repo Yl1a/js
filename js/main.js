@@ -18,6 +18,9 @@ inputYear.oninput = function(){
     this.value = this.value.replace(reg, '')
 }
 
+const currentYear = new Date().getFullYear();
+console.log(currentYear)
+
 regForm.addEventListener('keyup', function(){
     if(inputName.value.length < 2 ){
         inputName.style.border = "2px solid #dc7137";
@@ -34,6 +37,12 @@ regForm.addEventListener('keyup', function(){
         inputYear.style.border = "2px solid #dc7137";
         errYear.innerHTML = `<p class="error">*Введите год, 4 цифры</p>`;
         log = false;
+    }else if(currentYear-inputYear.value < 18){
+        inputYear.style.border = "2px solid #dc7137";
+        errYear.innerHTML = `<p class="error">*Вам меньше 18, подрастите и приходите позже</p>`;
+        log = false;
+
+
     }else{
         inputYear.style.border = "2px solid #AE9961";
         errYear.innerHTML = ``;
