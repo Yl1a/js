@@ -1,82 +1,125 @@
-/*sm8*/ 
-
-let inputName = document.querySelector('.inputName');
-let inputYear = document.querySelector('.inputYear');
-let btn = document.querySelector('.btn');
-let errName = document.querySelector('.errorName');
-let errYear = document.querySelector('.errorYear');
-let errorReg = document.querySelector('.errorReg');
-
-let regForm = document.querySelector('.reg');
+let modalShowButton = document.querySelector('.add-button');
+let modalHideButton = document.querySelector('.close-button');
+let modal = document.querySelector('.modal');
 
 
-reg = /[A-Za-zA-яА-яЁё]/g;
+let btnModal = document.querySelector('.send');
 
-log = true;
+let wraps = document.querySelector('.input_wraps');
+let inputModal = document.querySelector('.inputModal');
+let descModal = document.querySelector('.descModal');
 
-inputYear.oninput = function(){
-    this.value = this.value.replace(reg, '')
-}
+let errTitle = document.querySelector('.addTitle');
+let errDesc = document.querySelector('.addDesc');
 
-const currentYear = new Date().getFullYear();
-console.log(currentYear)
+modalShowButton.addEventListener('click', () => {
+    modal.classList.add('modal_active');
+})
 
-regForm.addEventListener('keyup', function(){
-    if(inputName.value.length < 2 ){
-        inputName.style.border = "2px solid #dc7137";
-        errName.innerHTML = `<p class="error">*Введите не менее 2 символов</p>`;
-        log = false;
-
-    }else{
-        inputName.style.border = "2px solid #AE9961";
-        errName.innerHTML = ``;
-        log = true;
-    }
-
-    if(inputYear.value.length < 4 || inputYear.value.length > 4 ){
-        inputYear.style.border = "2px solid #dc7137";
-        errYear.innerHTML = `<p class="error">*Введите год, 4 цифры</p>`;
-        log = false;
-    }else if(currentYear-inputYear.value < 18){
-        inputYear.style.border = "2px solid #dc7137";
-        errYear.innerHTML = `<p class="error">*Вам меньше 18, подрастите и приходите позже</p>`;
-        log = false;
-
-
-    }else{
-        inputYear.style.border = "2px solid #AE9961";
-        errYear.innerHTML = ``;
-        log = true;
-    }
-
-/*  */
-    
-    
+modalHideButton.addEventListener('click', () => {
+    modal.classList.remove('modal_active');
 })
 
 
+log = false;
 
 
-btn.onclick = function(event){
-    if (inputName.value.length === 0){
+wraps.addEventListener('keyup', function(event){
+    if(inputModal.value.length < 8){
+        errTitle.innerHTML = '<p class = "error">*слишком короткое название</p>'
+        inputModal.style.border = "1px solid #da2929";
         log = false;
-        errName.innerHTML =`<p class="error">*Введите имя</p>`;
-
+    }else{
+        errTitle.innerHTML = '<p class = "error"></p>'
+        inputModal.style.border = "1px solid #335b36";
+        log = true;
     }
-    if (inputYear.value.length === 0){
+    if(descModal.value.length > 300){
+        errDesc.innerHTML = '<p class = "error">*слишком большое описание</p>'
+        descModal.style.border = "1px solid #da2929";
+        lof = false;
+    }else{
+        errDesc.innerHTML = '<p class = "error"></p>'
+        descModal.style.border = "1px solid #335b36";
+    }
+})
+
+
+btnModal.onclick = function(event){
+    if(inputModal.value.length === 0){
+        errTitle.innerHTML = '<p class = "error">*введите название</p>';
+        inputModal.style.border = "1px solid #da2929";
         log = false;
-        errYear.innerHTML =`<p class="error">*Введите год</p>`;
     }
 
-    event.preventDefault();
-
-    if(log == true){
-        inputName.value = '';
-        inputYear.value = '';
+    if(descModal.value.length === 0){
+        errDesc.innerHTML = '<p class = "error">*введите описание</p>'
+        descModal.style.border = "1px solid #da2929";
+        log = false;
     }
+    
+    if(log === true){
+        Push(inputModal.value,descModal.value);
+        showArr (inputModal.value,descModal.value);
 
+        inputModal.value = "";
+        descModal.value = "";
+
+        modal.classList.remove('modal_active');
+
+    }
+    event.preventDefault();    
+}
+
+console.log('hello')
+
+document.addEventListener('keydown', function(event){
+    if(event.key.toLowerCase() == 'b'){
+        document.body.style.background = '#2f2f2f';
+        document.body.style.color = "#fff";
+        modal.style.color = "#000";
+    }else if(event.key.toLowerCase() == 'w'){
+        document.body.style.background = '#fff';
+    }
+})
+
+let arr = [
+    {
+        title: '123',
+        description: 'qeqweqweqweqweqwe',
+    },
+
+]
+let wrap = document.querySelector('.news-wrapper')
+function showArr (x,y){
+        wrap.insertAdjacentHTML('beforeend',
+        `<div class="news-item">
+        <h3 class="h3">${x}</h3>
+        <p class="news-item__p">
+            ${y}
+        </p>
+    </div>`);
+}
+
+arr.forEach(element => {
+    wrap.insertAdjacentHTML('beforeend',
+    `<div class="news-item">
+    <h3 class="h3">${element.title}</h3>
+    <p class="news-item__p">
+        ${element.description}
+    </p>
+</div>`)
+});
+
+function Push(x, y){
+    arr.push(
+        {
+        title: 'x',
+        description: 'y',
+    }
+    )
 }
 
 
-/*end*/
+
 
