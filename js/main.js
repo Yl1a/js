@@ -37,7 +37,7 @@ wraps.addEventListener('keyup', function(event){
     if(descModal.value.length > 300){
         errDesc.innerHTML = '<p class = "error">*слишком большое описание</p>'
         descModal.style.border = "1px solid #da2929";
-        lof = false;
+        log = false;
     }else{
         errDesc.innerHTML = '<p class = "error"></p>'
         descModal.style.border = "1px solid #335b36";
