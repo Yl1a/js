@@ -6,6 +6,15 @@ let btn = document.querySelector('.btn');
 let errName = document.querySelector('.errorName');
 let errYear = document.querySelector('.errorYear');
 let errorReg = document.querySelector('.errorReg');
+let menuBtn = document.querySelector('.menuBtn');
+let menu = document.querySelector('.menu');
+
+
+menuBtn.addEventListener('click',function(event){
+    menu.classList.toggle('show');
+    event.preventDefault();
+
+})
 
 let regForm = document.querySelector('.reg');
 
