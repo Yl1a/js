@@ -1,91 +1,46 @@
-/*sm8*/ 
-
-let inputName = document.querySelector('.inputName');
-let inputYear = document.querySelector('.inputYear');
-let btn = document.querySelector('.btn');
-let errName = document.querySelector('.errorName');
-let errYear = document.querySelector('.errorYear');
-let errorReg = document.querySelector('.errorReg');
-let menuBtn = document.querySelector('.menuBtn');
-let menu = document.querySelector('.menu');
+const slider = document.querySelector('.slider');
+const wrapperBtn = document.querySelectorAll('.wrapper i');/* 
+const slideEL = document.querySelectorAll('.slide'); */
+const firstCardLen = slider.querySelector('.slide').offsetWidth
+/* 
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next'); */
+let currentIndex = 0;
 
 
-menuBtn.addEventListener('click',function(event){
-    menu.classList.toggle('show');
-    event.preventDefault();
 
-})
-
-let regForm = document.querySelector('.reg');
-
-
-reg = /[A-Za-zA-яА-яЁё]/g;
-
-log = true;
-
-inputYear.oninput = function(){
-    this.value = this.value.replace(reg, '')
+function showSlide(){
+    const offset = -10 * slider.scrollLeft;
+    slider.style.transform = `translateX(${offset}%)`
 }
 
-const currentYear = new Date().getFullYear();
-console.log(currentYear)
-
-regForm.addEventListener('keyup', function(){
-    if(inputName.value.length < 2 ){
-        inputName.style.border = "2px solid #dc7137";
-        errName.innerHTML = `<p class="error">*Введите не менее 2 символов</p>`;
-        log = false;
-
-    }else{
-        inputName.style.border = "2px solid #AE9961";
-        errName.innerHTML = ``;
-        log = true;
-    }
-
-    if(inputYear.value.length < 4 || inputYear.value.length > 4 ){
-        inputYear.style.border = "2px solid #dc7137";
-        errYear.innerHTML = `<p class="error">*Введите год, 4 цифры</p>`;
-        log = false;
-    }else if(currentYear-inputYear.value < 18){
-        inputYear.style.border = "2px solid #dc7137";
-        errYear.innerHTML = `<p class="error">*Вам меньше 18, подрастите и приходите позже</p>`;
-        log = false;
-
-
-    }else{
-        inputYear.style.border = "2px solid #AE9961";
-        errYear.innerHTML = ``;
-        log = true;
-    }
-
-/*  */
-    
-    
-})
-
-
-
-
-btn.onclick = function(event){
-    if (inputName.value.length === 0){
-        log = false;
-        errName.innerHTML =`<p class="error">*Введите имя</p>`;
-
-    }
-    if (inputYear.value.length === 0){
-        log = false;
-        errYear.innerHTML =`<p class="error">*Введите год</p>`;
-    }
-
-    event.preventDefault();
-
-    if(log == true){
-        inputName.value = '';
-        inputYear.value = '';
-    }
-
+/* function goNext(){
+    currentIndex = (currentIndex + 1) % slideEL.length;
+    showSlide(currentIndex);
 }
 
+function goPrev(){
+    currentIndex = (currentIndex - 1 + slideEL.length) % slideEL.length;
+    showSlide(currentIndex);
+}
 
-/*end*/
+prevBtn.addEventListener('click', goPrev);
+nextBtn.addEventListener('click', goNext);
 
+showSlide(currentIndex) */
+
+wrapperBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        slider.scrollLeft += btn.id === 'left' ? - firstCardLen : firstCardLen;
+    })
+})
+
+const infiniteScroll = () => {
+    if(slider.scrollLeft === 0){
+        slider.scrollLeft = slider.scrollWidth - (2 * slider.offsetWidth);
+    }else if(Math.ceil(slider.scrollLeft) === slider.scrollWidth - slider.offsetWidth){
+        slider.scrollLeft = slider.offsetWidth;
+    }
+}
+
+slider.addEventListener('scroll', infiniteScroll);
