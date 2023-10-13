@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/main.js" defer></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -15,11 +16,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+>>>>>>> be53fa35e83312ca2447d73b1ac807542d314caa
     <title>Document</title>
 </head>
 <!-- fa-solid fa-chevron-up fa-rotate-right fa-2xl -->
 
 <body>
+<<<<<<< HEAD
     <div class="container">
         <div class="wrapper">
             <i id="left" class="fa-solid fa-angle-left fa-2xl prev"></i>
@@ -54,9 +59,49 @@
 
             </div>
             <i id="right" class="fa-solid fa-angle-right fa-2xl next"></i>
+=======
+    <div class="modal">
+        <div class="modal-form">
+            <div class="wrapper modal-form__wrapper">
+                <h2 class="h2">Добавление новости</h2>
+                <button class="close-button">
+                    <img src="img/close.svg" alt="" class="close-button__img">
+                </button>
+            </div>
+
+            <div class="input_wraps">
+                <div class="input_wrap">
+                    <input type="text" class="form-elem inputModal" placeholder="Название" id="inputModal">
+                    <div class="addTitle"></div>
+                </div>
+                <div class="input_wrap">
+                    <textarea class="form-elem descModal" placeholder="Текст" id="descModal"></textarea>
+                    <div class="addDesc"></div>
+                </div>
+                <button class="send">Добавить новость</button>
+            </div>
+>>>>>>> be53fa35e83312ca2447d73b1ac807542d314caa
 
         </div>
     </div>
+    <header class="header">
+        <div class="container">
+            <figure class="header-logo">
+                <img src="img/logo.svg" alt="" class="header-logo__img">
+            </figure>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="wrapper">
+                <h2 class="h2">Новости</h2>
+                <button class="add-button">Добавить новость</button>
+            </div>
+            <div class="wrapper news-wrapper">
+            </div>
+        </div>
+    </main>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>
